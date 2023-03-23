@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.btn{
+			height: 100px;
+			width: 100px;
+			background-color: green;
+			border: solid;
+			position: absolute;
+			border: solid;
+			background-image: url(kosti.png);
+			background-size: 100% 100%;
+		}
+		.back{
+			background-image: url(friend.png);
+			
+		}
+	</style>
+</head>
+<body class="body back">
+	<h4 style="margin-left: 20px">Score: <span class="score">150</span></h4>
+
+	<div class="btn">
+		
+	</div>
+<script type="text/javascript">
+	let body = document.querySelector(".body")
+	let scoretext = document.querySelector(".score")
+	let btn = document.querySelector(".btn")
+	let shag = 0;
+	let score = 150;
+	
+
+	btn.onclick = function() {
+		let random = Math.random() * 6; //рандом не целое число всегда
+		let round = Math.round(random);
+
+		boxs[shag].style.backgroundImage = "none";
+		shag = shag + round;
+		boxs[shag].style.backgroundImage = "url(square.png)";
+		boxs[shag].style.backgroundSize = "100% 100%";
+
+		if(shag==2){
+			score = score + 30;
+			scoretext.innerHTML = score;
+		}
+
+		if(shag==3){
+			score = score - 50;
+			scoretext.innerHTML = score;
+		}
+
+		if(shag>7){//логика конца игры
+			score = 0;
+			cells[shag].style.backgroundImage = "url(duck.png)"
+			if(score>100){
+				alert("win")
+			}
+			if(score<50){
+				alert("you lose")
+			}
+		}
+	}
+
+
+	let pixel = function(arg, arg2, arg3, arg4, arg5 ) {
+		let mydiv = document.createElement("div");
+
+		body.appendChild(mydiv);
+		mydiv.style.background = arg3;
+		mydiv.style.height = "80px";
+		mydiv.style.width = "80px";
+		mydiv.style.position = "absolute";
+		mydiv.style.left = arg + "px";
+		mydiv.style.top = arg2 +"px";
+		mydiv.style.borderRadius = arg4 +"px";
+		mydiv.style.border = "solid"
+		
+
+		mydiv.classList.add("boxes")
+	}
+
+	pixel(200, 100, "brown", 5);
+	pixel(200, 200, "green", 5, "WIN!!");
+	pixel(200, 300, "yellow", 5);
+	pixel(200, 400, "brown", 5);
+	pixel(200, 500, "green", 5);
+	pixel(200, 600, "yellow", 5);
+	pixel(200, 700, "brown", 5);
+	pixel(300, 700, "green", 5);
+	pixel(400, 700, "yellow", 5);
+	pixel(500, 700, "brown", 5);
+	pixel(600, 700, "green", 5);
+	pixel(600, 600, "yellow", 5);
+	pixel(600, 500, "brown", 5);
+	pixel(600, 400, "green", 5);
+	pixel(600, 300, "yellow", 5);
+	pixel(600, 200, "brown", 5);
+	pixel(600, 100, "green", 5);
+	pixel(700, 100, "yellow", 5);
+	pixel(800, 100, "brown", 5);
+	pixel(900, 100, "green", 5);
+	pixel(1000, 100, "yellow", 5);
+	pixel(1000, 200, "brown", 5);
+	pixel(1000, 300, "green", 5);
+	pixel(1000, 400, "yellow", 5);
+	pixel(1000, 500, "brown", 5);
+	pixel(1000, 600, "green", 5);
+	pixel(1000, 700, "yellow", 5);
+	pixel(1100, 700, "brown", 5);
+	pixel(1200, 700, "green", 5);
+	pixel(1300, 700, "yellow", 5);
+	pixel(1400, 700, "", 5);
+
+	let boxs = document.querySelectorAll(".boxes")
+	
+	boxs[0].style.backgroundImage = "url(square.png)";
+	boxs[0].style.backgroundSize = "100% 100%";
+
+
+	
+	
+		
+</script>
+</body>
+</html>
